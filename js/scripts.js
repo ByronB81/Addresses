@@ -1,8 +1,11 @@
 //business logic
-function Contact (first, last){
+function Contact (first, last) {
   this.firstName = first;
   this.lastName = last;
-  this.addresses = [];
+}
+
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
 }
 
 function Address(street, city, state){
@@ -21,7 +24,7 @@ $(document).ready(function() {
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
-    $("ul#contacts").append("<li><span class='contact')>" + newContact.firstName + "</span></li>");
+    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
     $(".contact").last().click(function() {
       $("#show-contact").show();
